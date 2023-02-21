@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 my-2">
-            <a href=" {{route('admin.index')}} " class="btn btn-primary">Back</a>
+            <a href=" {{route('admin.projects.index')}} " class="btn btn-primary">Back</a>
         </div>
         <div class="col-12">
             <h1>Admim Show</h1>

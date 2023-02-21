@@ -18,7 +18,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">
                             CRUD
-                            <a href=" {{route('admin.create')}} " class="btn btn-info ms-3">Create</a>
+                            <a href=" {{route('admin.projects.create')}} " class="btn btn-info ms-3">Create</a>
                         </th>
                     </tr>
                 </thead>
@@ -32,9 +32,9 @@
                             <td>{{$project->place}}</td>
                             <td>{{$project->description}}</td>
                             <td>
-                                <a href=" {{route('admin.show', $project->id)}} " class="btn btn-primary">Show</a>
-                                <a href=" {{route('admin.edit', $project->id)}} " class="btn btn-warning">Edit</a>
-                                <form action="{{ route('admin.destroy', $project->id)}}" method="post" class="d-inline-block">
+                                <a href=" {{route('admin.projects.show', $project->id)}} " class="btn btn-primary">Show</a>
+                                <a href=" {{route('admin.projects.edit', $project->id)}} " class="btn btn-warning">Edit</a>
+                                <form action="{{ route('admin.projects.destroy', $project->id)}}" method="post" class="d-inline-block">
                                     @csrf
                                     @method('DELETE')
 

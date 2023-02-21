@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
-class ProjectController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index() {
         $projects = project::all();
-        return view('admin.index', compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class ProjectController extends Controller
         $newProject->description = $data['description'];
         $newProject->save();
         
-        return redirect()->route('admin.show', $newProject->id);
+        return redirect()->route('admin.projects.show', $newProject->id);
     }
 
     /**
@@ -82,7 +82,7 @@ class ProjectController extends Controller
      */
     public function show($id) {
         $project = Project::find($id);
-        return view('admin.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -91,9 +91,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        $project = Project::find($id);
-        return view('admin.edit', compact('project'));
+    public function edit(Project $project) {
+        //$project = Project::find($id);
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -108,7 +108,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $project->update($data);
 
-        return redirect()->route('admin.show', $project->id);
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**
@@ -120,6 +120,6 @@ class ProjectController extends Controller
     public function destroy($id) {
         $project = Project::find($id);
         $project->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.projects.index');
     }
 }

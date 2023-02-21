@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ProjectController as ProjectController;
+use App\Http\Controllers\Admin\ProjectsController as AdminProjectsController;
+use App\Http\Controllers\Guest\ProjectsController as GuestProjectsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,22 +16,17 @@ use App\Http\Controllers\Admin\ProjectController as ProjectController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [GuestProjectsController::class, 'index'])->name('guest.projects.index');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')
-// ->name('admin.')
-// ->prefix('admin')
-// ->group(function () {
-//     //Route::get('/admin', [DashboardController::class, 'index'])->name('index');
-// });
+Route::middleware('auth')
+->name('admin.')
+->prefix('admin')
+->group(function () {
+    Route::resource('projects', AdminProjectsController::class);
+    //Route::get('/admin', [DashboardController::class, 'index'])->name('index');
+});
 
-Route::resource('admin', ProjectController::class);
 
 
 require __DIR__.'/auth.php';
