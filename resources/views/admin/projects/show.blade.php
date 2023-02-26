@@ -28,6 +28,10 @@
             <h5>Description:</h5>
             <p class="ms-2">{{$project->description}}</p>
         </div>
+        <div class="col-12">
+            <h5>Image:</h5>
+            <img src="{{ asset('storage/' . $project->image)}}" alt="">
+        </div>
     </div>
 </div>
 @endsection

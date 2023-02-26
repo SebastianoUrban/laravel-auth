@@ -5,6 +5,7 @@ use App\Models\Project;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -45,6 +46,7 @@ class ProjectsTableSeeder extends Seeder
             $newProject->end_date = $project['end_date'];
             $newProject->place = $project['place'];
             $newProject->description = $project['description'];
+            $newProject->image = 'placeholder.jpg';
             $newProject->save();
         }
     }

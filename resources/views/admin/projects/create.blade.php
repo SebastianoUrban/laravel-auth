@@ -10,7 +10,7 @@
             <h1>Admim Create</h1>
         </div>
         <div class="col-12">
-            <form action="{{ route('admin.projects.store') }}" method="POST">
+            <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="row g-4">
@@ -33,6 +33,10 @@
                     <div class="col-12">
                         <label for="description">Description</label>
                         <input type="text" name="description" id="description" value="">
+                    </div>
+                    <div class="col-12">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image" value="">
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit">Crea</button>

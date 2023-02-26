@@ -16,6 +16,7 @@
                         <th scope="col">End Date</th>
                         <th scope="col">Place</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Image</th>
                         <th scope="col">
                             CRUD
                             <a href=" {{route('admin.projects.create')}} " class="btn btn-info ms-3"><i class="fa-solid fa-square-plus"></i></a>
@@ -31,6 +32,7 @@
                             <td>{{$project->end_date}}</td>
                             <td>{{$project->place}}</td>
                             <td>{{$project->description}}</td>
+                            <td>{{$project->image}}</td>
                             <td>
                                 <a href=" {{route('admin.projects.show', $project->id)}} " class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                                 <a href=" {{route('admin.projects.edit', $project->id)}} " class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>

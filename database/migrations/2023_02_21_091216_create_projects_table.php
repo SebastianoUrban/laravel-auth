@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('end_date')->default('2023-01-01');
             $table->string('place', 200)->default('Italia');
             $table->text('description')->default('');
+            $table->text('image')->default('');
             $table->timestamps();
         });
     }

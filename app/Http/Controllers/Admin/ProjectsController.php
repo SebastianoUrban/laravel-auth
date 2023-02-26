@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -41,7 +42,8 @@ class ProjectsController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'place' => 'required|string|min:2|max:200',
-            'description' => 'required|string|min:2'
+            'description' => 'required|string|min:2',
+            'image' => 'image'
         ],
         [
             'title.required' => 'Il campo TITOLO è obbligatorio!',
@@ -61,14 +63,19 @@ class ProjectsController extends Controller
             'description.required' => 'Il campo DESCRIPTION è obbligatorio!',
             'description.string' => 'Il campo DESCRIPTION deve essere una STRINGA!',
             'description.min' => 'Il campo DESCRIPTION deve essere lungo ALMENO 2 CARATTERI!',
+
+            'image.image' => 'Il campo IMAGE deve essere una IMMAGINE!'
         ]);
         
+
         $newProject = new Project();
         $newProject->title = $data['title'];
         $newProject->start_date = $data['start_date'];
         $newProject->end_date = $data['end_date'];
         $newProject->place = $data['place'];
         $newProject->description = $data['description'];
+        $newProject->image = Storage::put('uploads', $data['image']);;
+
         $newProject->save();
         
         return redirect()->route('admin.projects.show', $newProject->id);

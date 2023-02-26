@@ -34,6 +34,10 @@
                         <label for="description">Description</label>
                         <input type="text" name="description" id="description" value="{{$project->description}}">
                     </div>
+                    <div class="col-12">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image" value="{{$project->image}}">
+                    </div>
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit">Invia</button>
                     </div>
